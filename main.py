@@ -31,6 +31,7 @@ async def init_connection(websocket, path):
                 'type' : 'realtime_data'
 
               }
+              global stop
               while not stop:
                 await websocket.send(json.dumps(response_body))
             elif data['option'] == 'stopRealtimeInfo':
