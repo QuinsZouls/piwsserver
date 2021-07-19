@@ -4,6 +4,7 @@ import logging
 from utils.driver import AnalogOutput
 import websockets
 import os
+import time
 #Env
 SERVER_PORT = os.getenv('SERVER_PORT', 6789)
 SERVER_URL = os.getenv('SERVER_URL', "localhost")
@@ -34,6 +35,8 @@ async def init_connection(websocket, path):
               global stop
               while not stop:
                 await websocket.send(json.dumps(response_body))
+                print(driver.getDeviceValue())
+                time.sleep(1)
             elif data['option'] == 'stopRealtimeInfo':
               stop = True
 
