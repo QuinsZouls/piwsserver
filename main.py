@@ -38,6 +38,7 @@ async def init_connection(websocket, path):
                 time.sleep(1)
             elif data['option'] == 'stopRealtimeInfo':
               stop = True
+            print(data)
 
     except:
       print("Error starting server")
