@@ -24,7 +24,7 @@ stop = False
 async def init_connection(websocket, path):
     try:
         await websocket.send(json.dumps(CONNECTED_RESPONSE))
-        async for message in websocket:
+        for message in websocket:
             data = json.loads(message)
             if data['option'] == 'getRealtimeInfo':
               global stop
@@ -34,7 +34,7 @@ async def init_connection(websocket, path):
                   'type' : 'realtime_data'
 
                 }
-                await websocket.send(json.dumps(response_body))
+                websocket.send(json.dumps(response_body))
                 time.sleep(1)
             elif data['option'] == 'stopRealtimeInfo':
               stop = True
