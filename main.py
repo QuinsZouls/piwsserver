@@ -35,7 +35,6 @@ async def init_connection(websocket, path):
 
                 }
                 await websocket.send(json.dumps(response_body))
-                print(driver.getDeviceValue())
                 time.sleep(1)
             elif data['option'] == 'stopRealtimeInfo':
               stop = True
