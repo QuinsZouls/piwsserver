@@ -27,13 +27,13 @@ async def init_connection(websocket, path):
         async for message in websocket:
             data = json.loads(message)
             if data['option'] == 'getRealtimeInfo':
-              response_body = {
-                'value' : driver.getDeviceValue(),
-                'type' : 'realtime_data'
-
-              }
               global stop
               while not stop:
+                response_body = {
+                  'value' : driver.getDeviceValue(),
+                  'type' : 'realtime_data'
+
+                }
                 await websocket.send(json.dumps(response_body))
                 print(driver.getDeviceValue())
                 time.sleep(1)
