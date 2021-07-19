@@ -32,7 +32,6 @@ async def sendRealtimeInfo(ws):
 
         }
         await ws.send(json.dumps(response_body))
-        time.sleep(0.05)
 
 async def init_connection(websocket, path):
     try:
