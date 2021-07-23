@@ -4,7 +4,6 @@ import logging
 from utils.driver import AnalogOutput
 import websockets
 import os
-import time
 import threading
 # Env
 SERVER_PORT = os.getenv('SERVER_PORT', 6789)
